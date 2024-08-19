@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  mysqlcali:
+    image: mysql:5
+    environment:
+      - MYSQL_DATABASE=my_db
+      - MYSQL_USER=db_user
+      - MYSQL_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - '3307:3306'
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - PMA_HOST=mysqlcali
+    ports:
+      - '8080:80'
