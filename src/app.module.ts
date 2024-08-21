@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ProductsController } from './products.controller';
 import { ConfigModule } from '@nestjs/config';
@@ -10,6 +10,7 @@ import { Product } from './models/product.entity';
 import { AdminController } from './admin/admin.controller';
 import { AdminModule } from './admin/admin.module';
 
+@Global()
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,5 +23,6 @@ import { AdminModule } from './admin/admin.module';
   ],
   controllers: [AppController, ProductsController, AdminController],
   providers: [ProductsService],
+  exports: [ProductsService],
 })
 export class AppModule {}
