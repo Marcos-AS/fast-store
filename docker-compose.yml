@@ -3,7 +3,7 @@ services:
   mysqlcali:
     image: mysql:5
     environment:
-      - MYSQL_DATABASE=my_db
+      - MYSQL_DATABASE=online_store
       - MYSQL_USER=db_user
       - MYSQL_PASSWORD=123456
       - MYSQL_ROOT_PASSWORD=123456
