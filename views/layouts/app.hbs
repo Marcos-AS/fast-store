@@ -22,6 +22,13 @@
                 <a class="nav-link active" href="/">Home</a>
                 <a class="nav-link active" href="/products">Products</a>
                 <a class="nav-link active" href="/about">About</a>
+                <div class="vr bg-white mx-2 d-none d-lg-block"></div>
+                {{#if session.user}}
+                <a href="/auth/logout" class="nav-link active">Logout ({{session.user.name}})</a>
+                {{else}}
+                <a href="/auth/login" class="nav-link active">Login</a>
+                <a href="/auth/register" class="nav-link active">Register</a>
+                {{/if}}
             </div>
         </div>
     </div>

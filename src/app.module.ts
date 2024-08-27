@@ -9,6 +9,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './models/product.entity';
 import { AdminController } from './admin/admin.controller';
 import { AdminModule } from './admin/admin.module';
+import { UsersService } from './models/users.service';
+import { User } from './models/user.entity';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Global()
 @Module({
@@ -18,11 +22,17 @@ import { AdminModule } from './admin/admin.module';
       isGlobal: true,
     }),
     DatabaseModule,
-    TypeOrmModule.forFeature([Product]),
+    TypeOrmModule.forFeature([Product, User]),
     AdminModule,
+    AuthModule,
   ],
-  controllers: [AppController, ProductsController, AdminController],
-  providers: [ProductsService],
-  exports: [ProductsService],
+  controllers: [
+    AppController,
+    ProductsController,
+    AdminController,
+    AuthController,
+  ],
+  providers: [ProductsService, UsersService],
+  exports: [ProductsService, UsersService],
 })
 export class AppModule {}
